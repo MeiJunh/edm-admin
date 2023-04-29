@@ -50,54 +50,46 @@ export default [
       }
     ]
   },
-  // {
-  //   path: '',
-  //   name: 'doc',
-  //   meta: {
-  //     title: '文档',
-  //     href: 'https://lison16.github.io/iview-admin-doc/#/',
-  //     icon: 'ios-book'
-  //   }
-  // },
-  // {
-  //   path: '/join',
-  //   name: 'join',
-  //   component: Main,
-  //   meta: {
-  //     hideInBread: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'join_page',
-  //       name: 'join_page',
-  //       meta: {
-  //         icon: '_qq',
-  //         title: 'QQ群'
-  //       },
-  //       component: () => import('@/view/join-page.vue')
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/message',
-  //   name: 'message',
-  //   component: Main,
-  //   meta: {
-  //     hideInBread: true,
-  //     hideInMenu: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'message_page',
-  //       name: 'message_page',
-  //       meta: {
-  //         icon: 'md-notifications',
-  //         title: '消息中心'
-  //       },
-  //       component: () => import('@/view/single-page/message/index.vue')
-  //     }
-  //   ]
-  // },
+  {
+    path: '/edm',
+    name: 'edm处理',
+    meta: {
+      icon: 'logo-buffer',
+      title: 'edm处理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'hello_test',
+        name: 'hello_test',
+        meta: {
+          icon: 'md-arrow-dropdown-circle',
+          title: 'hello测试'
+        },
+        component: () => import('@/view/components/tree-select/index.vue')
+      },
+    ]
+  },
+  {
+    path: '/edm_tool',
+    name: '实用工具',
+    meta: {
+      icon: 'logo-buffer',
+      title: '实用工具'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'hello_test',
+        name: 'hello_test',
+        meta: {
+          icon: 'md-arrow-dropdown-circle',
+          title: 'hello测试'
+        },
+        component: () => import('@/view/components/tree-select/index.vue')
+      },
+    ]
+  },
   {
     path: '/hide-tool',
     name: '框架组件教学',
@@ -414,4 +406,52 @@ export default [
     },
     component: () => import('@/view/error-page/404.vue')
   }
+  // {
+  //   path: '',
+  //   name: 'doc',
+  //   meta: {
+  //     title: '文档',
+  //     href: 'https://lison16.github.io/iview-admin-doc/#/',
+  //     icon: 'ios-book'
+  //   }
+  // },
+  // {
+  //   path: '/join',
+  //   name: 'join',
+  //   component: Main,
+  //   meta: {
+  //     hideInBread: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'join_page',
+  //       name: 'join_page',
+  //       meta: {
+  //         icon: '_qq',
+  //         title: 'QQ群'
+  //       },
+  //       component: () => import('@/view/join-page.vue')
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/message',
+  //   name: 'message',
+  //   component: Main,
+  //   meta: {
+  //     hideInBread: true,
+  //     hideInMenu: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'message_page',
+  //       name: 'message_page',
+  //       meta: {
+  //         icon: 'md-notifications',
+  //         title: '消息中心'
+  //       },
+  //       component: () => import('@/view/single-page/message/index.vue')
+  //     }
+  //   ]
+  // },
 ]
