@@ -18,27 +18,12 @@ export default function rest (options) {
         return JSONbig.parse(data)
       }]
     })
-    // http request 拦截器
-    instance.interceptors.request.use(
-      config => {
-        iView.LoadingBar.start()
-        // config.headers.Authorization = 'token'
-        return config
-      },
-      err => {
-        iView.LoadingBar.error()
-        return Promise.reject(err)
-      })
-
-    // http response 拦截器
-    instance.interceptors.response.use(
-      response => {
-        iView.LoadingBar.finish()
-        return response
-      },
-      error => {
-        iView.LoadingBar.error()
-        return Promise.reject(error) // 返回接口返回的错误信息
+    // 请求处理
+    instance(options)
+      .then((res) => {
+        // 请求成功时,根据业务判断状态
+        resolve(res.data)
+        return false
       })
   })
 }
