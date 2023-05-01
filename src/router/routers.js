@@ -66,7 +66,7 @@ export default [
           icon: 'md-arrow-dropdown-circle',
           title: 'hello测试'
         },
-        component: () => import('@/view/components/tree-select/index.vue')
+        component: () => import('@/views/hello-test/hello.vue')
       },
     ]
   },
