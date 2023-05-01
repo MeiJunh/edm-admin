@@ -66,8 +66,8 @@ export default [
           icon: 'md-arrow-dropdown-circle',
           title: 'hello测试'
         },
-        component: () => import('@/views/hello-test/hello.vue')
-      },
+        component: () => import('../view/hello-test/hello.vue')
+      }
     ]
   },
   {
@@ -80,14 +80,14 @@ export default [
     component: Main,
     children: [
       {
-        path: 'hello_test',
-        name: 'hello_test',
+        path: 'hello_test2',
+        name: 'hello_test2',
         meta: {
           icon: 'md-arrow-dropdown-circle',
           title: 'hello测试'
         },
-        component: () => import('@/view/components/tree-select/index.vue')
-      },
+        component: () => import('../view/hello-test/hello.vue')
+      }
     ]
   },
   {
@@ -328,7 +328,7 @@ export default [
           title: '二级-3'
         },
         component: () => import('@/view/multilevel/level-2-3.vue')
-      },
+      }
     ]
   },
   {

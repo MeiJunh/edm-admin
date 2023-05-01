@@ -1,7 +1,7 @@
-import config from '@/config/index.js'
-import rest from '@/libs/rest.js'
+import config from '../../config/index.js'
+import rest from '../../libs/rest.js'
 
-function getHelloRsp() {
+function getHelloRsp () {
   return rest({
     url: `${config.ApiHost}/hello/imp`,
     method: 'post',
@@ -13,5 +13,5 @@ function getHelloRsp() {
 
 export default {
   // 暴露的方法
-  getHelloRsp: getHelloRsp,
+  getHelloRsp: getHelloRsp
 }

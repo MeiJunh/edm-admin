@@ -33,5 +33,5 @@ export default {
       developmentOff: true // 设为true后在开发环境不会收集错误信息，方便开发中排查错误
     }
   },
-  ApiHost: "https:127.0.0.1:18888"
+  ApiHost: 'http://127.0.0.1:18888'
 }
