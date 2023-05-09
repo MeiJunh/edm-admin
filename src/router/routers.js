@@ -60,6 +60,55 @@ export default [
     component: Main,
     children: [
       {
+        path: 'gbrs_archive_list',
+        name: '干部人事档案信息列表',
+        meta: {
+          icon: 'logo-buffer',
+          title: '干部人事档案信息列表'
+        },
+        component: () => import('../view/archive/ren_shi_dang_an.vue')
+      }, {
+        path: 'ldry_archive_list',
+        name: '流动人员人事档案',
+        meta: {
+          icon: 'logo-buffer',
+          title: '流动人员人事档案'
+        },
+        component: () => import('../view/archive/liu_dong_ren_yuan.vue')
+      }, {
+        path: 'ajj_archive_list',
+        name: '案卷级档案',
+        meta: {
+          icon: 'logo-buffer',
+          title: '案卷级档案'
+        },
+        component: () => import('../view/archive/an_juan_ji.vue')
+      }, {
+        path: 'wjj_archive_list',
+        name: '文件级档案',
+        meta: {
+          icon: 'logo-buffer',
+          title: '文件级档案'
+        },
+        component: () => import('../view/archive/wen_jian_ji.vue')
+      }, {
+        path: 'fyss_archive_list',
+        name: '法院诉讼档案',
+        meta: {
+          icon: 'logo-buffer',
+          title: '法院诉讼档案'
+        },
+        component: () => import('../view/archive/fa_yuan_su_song.vue')
+      }, {
+        path: 'bdc_archive_list',
+        name: '不动产档案',
+        meta: {
+          icon: 'logo-buffer',
+          title: '不动产档案'
+        },
+        component: () => import('../view/archive/bu_dong_chan.vue')
+      },
+      {
         path: 'hello_test',
         name: 'hello_test',
         meta: {
