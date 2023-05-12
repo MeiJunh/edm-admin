@@ -3,7 +3,7 @@ import rest from '@/libs/rest.js'
 import config from '@/config/index.js'
 
 // 暴露的方法
-function getColumns (copyTransFileFunc) {
+function getColumns (copyTransFileFunc, transFileFunc) {
   return [
     {
       type: 'selection',
@@ -84,11 +84,11 @@ function getColumns (copyTransFileFunc) {
         let editBtn = h(
           'Button',
           {
-            props: { type: 'info', size: 'small' },
+            props: { type: 'info', size: 'small', class: 'container' },
             style: { margin: '5px 5px' },
             on: {
               click: () => {
-                transFileByArchiveID(params.row.id)
+                transFileFunc(params.row.id)
               }
             }
           },
@@ -146,11 +146,22 @@ function transFileByArchiveID (archiveID) {
   })
 }
 
+function transFileByType (archiveType) {
+  return rest({
+    url: `${config.ApiHost}/archive/transByType?archiveType=` + archiveType,
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
+
 export default {
   // 暴露的方法
   getColumns: getColumns,
   getArchiveListData: getArchiveListData,
   transFileByArchiveID: transFileByArchiveID,
+  transFileByType: transFileByType,
   ATGanBuRenShi: 1, // 干部人事
   ATLiuDongRenYuan: 2, // 流动人员
   ATAnJuanJi: 3, // 案卷级档案

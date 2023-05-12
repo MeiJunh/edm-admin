@@ -20,17 +20,17 @@ import Api from '@/services/hello-test/hello'
 var vModel
 export default {
   components: {},
-  data() {
+  data () {
     return {
       helloModel: {
-        helloRsp: ""
-      },
+        helloRsp: ''
+      }
     }
   },
 
   computed: {},
   methods: {
-    getHelloRsp() {
+    getHelloRsp () {
       Api.getHelloRsp().then(response => {
         if (response.code === 0) {
           vModel.helloModel.helloRsp = response.data
@@ -41,17 +41,10 @@ export default {
           })
         }
       })
-    },
+    }
   },
-  created() {
+  created () {
     vModel = this
-  },
-  mounted() {
   }
 }
 </script>
-
-
-<style scoped>
-</style>
-
