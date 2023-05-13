@@ -119,6 +119,63 @@ function getColumns (copyTransFileFunc, transFileFunc) {
   ]
 }
 
+function getFileTransColumns () {
+  return [
+    {
+      title: '档案编号',
+      key: 'id',
+      width: 120,
+      align: 'center'
+    },
+    {
+      title: '档案信息名',
+      key: 'name',
+      width: 200,
+      align: 'center'
+    },
+    {
+      title: '批次名',
+      key: 'batchNo',
+      width: 120,
+      align: 'center'
+    },
+    {
+      title: '图片所在目录',
+      key: 'imageFolder',
+      width: 150,
+      align: 'center'
+    },
+    {
+      title: '图片总分数',
+      key: 'imageCount',
+      width: 150,
+      align: 'center'
+    },
+    {
+      title: '插入的页面数',
+      key: 'insertPages',
+      width: 150,
+      align: 'center'
+    },
+    {
+      title: '创建时间',
+      width: 220,
+      align: 'center',
+      render: (h, params) => {
+        return h('div', timeUtil.formatDate(new Date(params.row.createdTimestamp * 1000), 'yyyy-MM-dd hh:mm:ss', '-'))
+      }
+    },
+    {
+      title: '最后一次更新时间',
+      width: 220,
+      align: 'center',
+      render: (h, params) => {
+        return h('div', timeUtil.formatDate(new Date(params.row.lastUpdateTime * 1000), 'yyyy-MM-dd hh:mm:ss', '-'))
+      }
+    }
+  ]
+}
+
 function getArchiveListData (params, page, archiveType) {
   let data = {
     archiveName: params.archiveName,
@@ -149,7 +206,22 @@ function transFileByArchiveID (archiveID) {
 function transFileByType (archiveType) {
   return rest({
     url: `${config.ApiHost}/archive/transByType?archiveType=` + archiveType,
-    method: 'get',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
+
+function transFileByIDList (archiveIDList, archiveType) {
+  let data = {
+    archiveIdList: archiveIDList,
+    archiveType: archiveType
+  }
+  return rest({
+    url: `${config.ApiHost}/archive/transByIDList`,
+    method: 'post',
+    data: data,
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
     }
@@ -162,6 +234,8 @@ export default {
   getArchiveListData: getArchiveListData,
   transFileByArchiveID: transFileByArchiveID,
   transFileByType: transFileByType,
+  transFileByIDList: transFileByIDList,
+  getFileTransColumns: getFileTransColumns,
   ATGanBuRenShi: 1, // 干部人事
   ATLiuDongRenYuan: 2, // 流动人员
   ATAnJuanJi: 3, // 案卷级档案

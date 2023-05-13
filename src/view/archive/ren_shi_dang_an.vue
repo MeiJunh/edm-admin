@@ -16,7 +16,7 @@
       </FormItem>
     </Form>
     <div>
-      <Button type="info" @click="refundList()">文件转化</Button>
+      <Button type="info" @click="transFileByIDList()">文件转化</Button>
 
     </div>
     <!-- 表格组件 -->
@@ -25,6 +25,7 @@
       :data="table.dataArray"
       ref="table"
       width="1648"
+      @on-selection-change="selectRowChange"
     ></Table>
 
     <!-- 分页组件 -->
@@ -40,6 +41,21 @@
       @on-page-size-change="changePageSize"
     >
     </Page>
+
+    <!-- 模态框 -->
+    <Modal
+      title="文件转化列表"
+      v-model="transFile"
+      :closable="true"
+      width="1000"
+      @on-ok="doFileListTrans"
+    >
+      <Table
+        :columns="table.transFileColumns"
+        :data="transFileList"
+        ref="table"
+      ></Table>
+    </Modal>
   </Card>
 </template>
 
@@ -56,13 +72,16 @@ let vModel
 export default {
   data () {
     return {
+      transFileList: [],
+      transFile: false,
       // 查询对象
       queryParams: {},
       // 表单组件对象
       form: {},
       // 表格组件对象
       table: {
-        columns: apiComm.getColumns(this.mCopy, this.transFile),
+        columns: apiComm.getColumns(this.mCopy, this.transFileByID),
+        transFileColumns: apiComm.getFileTransColumns(),
         dataArray: []
       },
       // 分页组件对象
@@ -101,7 +120,40 @@ export default {
       this.page.pageSize = pageSize
       this.getData()
     },
-    transFile (archiveID) {
+    selectRowChange (selection) {
+      this.transFileList = selection
+      console.log('this trans file list ', this.transFileList)
+    },
+    transFileByIDList () {
+      this.transFile = true
+    },
+    doFileListTrans () {
+      // this.$Modal.confirm({
+      //   title: "文件批量转化",
+      //   content: "确认转化吗？",
+      //   okText: "确认",
+      //   onOk: function () {
+      let transIDList = []
+      console.log('do trans file list ', vModel.transFileList)
+      for (const item of vModel.transFileList) {
+        transIDList.push(item.id)
+      }
+      apiComm.transFileByIDList(transIDList, vModel.archiveType).then((response) => {
+        if (response.code === 0) {
+          vModel.$Message.info('文件转换中！')
+        } else {
+          let message = '转换异常:' + response.msg
+          vModel.$Notice.error({
+            desc: message
+          })
+        }
+      })
+      this.transFileList = []
+      this.getData()
+    },
+    // });
+    // },
+    transFileByID (archiveID) {
       apiComm.transFileByArchiveID(archiveID).then((response) => {
         if (response.code === 0) {
           vModel.$Notice.info({
