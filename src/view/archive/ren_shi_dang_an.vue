@@ -182,6 +182,7 @@ export default {
         console.log(e)
       })
     }
+
   },
   created () {
     vModel = this

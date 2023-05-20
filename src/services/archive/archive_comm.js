@@ -23,12 +23,6 @@ function getColumns (copyTransFileFunc, transFileFunc) {
       align: 'center'
     },
     {
-      title: '批次id',
-      key: 'batchId',
-      width: 80,
-      align: 'center'
-    },
-    {
       title: '批次名',
       key: 'batchNo',
       width: 120,
@@ -47,9 +41,15 @@ function getColumns (copyTransFileFunc, transFileFunc) {
       align: 'center'
     },
     {
-      title: '插入的页面数',
-      key: 'insertPages',
-      width: 150,
+      title: '数据录入状态',
+      key: 'flow4Status',
+      width: 100,
+      align: 'center'
+    },
+    {
+      title: '监理质检状态',
+      key: 'flow5Status',
+      width: 100,
       align: 'center'
     },
     {
@@ -148,12 +148,6 @@ function getFileTransColumns () {
     {
       title: '图片总分数',
       key: 'imageCount',
-      width: 150,
-      align: 'center'
-    },
-    {
-      title: '插入的页面数',
-      key: 'insertPages',
       width: 150,
       align: 'center'
     },
