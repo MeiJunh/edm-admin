@@ -129,6 +129,15 @@ export default [
     component: Main,
     children: [
       {
+        path: 'file_path',
+        name: '获取文件路径',
+        meta: {
+          icon: 'md-arrow-dropdown-circle',
+          title: '获取文件路径'
+        },
+        component: () => import('../view/tools/file_path.vue')
+      },
+      {
         path: 'hello_test2',
         name: 'hello_test2',
         meta: {
