@@ -136,6 +136,14 @@ export default [
           title: '获取文件路径'
         },
         component: () => import('../view/tools/file_path.vue')
+      }, {
+        path: 'copy_move_file',
+        name: '文件拷贝/迁移',
+        meta: {
+          icon: 'md-arrow-dropdown-circle',
+          title: '文件拷贝/迁移'
+        },
+        component: () => import('../view/tools/copy_or_move_file.vue')
       },
       {
         path: 'hello_test2',
