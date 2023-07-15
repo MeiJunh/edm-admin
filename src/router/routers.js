@@ -146,6 +146,63 @@ export default [
         component: () => import('../view/tools/copy_or_move_file.vue')
       },
       {
+        path: 'img_format_trans',
+        name: '图片格式转化',
+        meta: {
+          icon: 'md-arrow-dropdown-circle',
+          title: '图片格式转化'
+        },
+        component: () => import('../view/tools/img_format_trans.vue')
+      },
+      {
+        path: 'pdf',
+        name: 'pdf相关工具',
+        meta: {
+          access: ['super_admin'],
+          icon: 'md-funnel',
+          showAlways: true,
+          title: 'pdf相关工具'
+        },
+        component: parentView,
+        children: [
+          {
+            path: 'mergePdfDir',
+            name: 'pdf合并',
+            meta: {
+              icon: 'md-funnel',
+              title: '三级'
+            },
+            component: () => import('../view/tools/pdf_merge.vue')
+          },
+          {
+            path: 'removePdf',
+            name: 'pdf截取',
+            meta: {
+              icon: 'md-funnel',
+              title: '三级'
+            },
+            component: () => import('../view/tools/pdf_remove.vue')
+          }, {
+            path: 'replacePdf',
+            name: 'pdf替换',
+            meta: {
+              icon: 'md-funnel',
+              title: '三级'
+            },
+            component: () => import('../view/tools/pdf_replace.vue')
+          },
+          {
+            path: 'level_2_2_2',
+            name: 'level_2_2_2',
+            meta: {
+              icon: 'md-funnel',
+              title: '三级'
+            },
+            component: () => import('@/view/multilevel/level-2-2/level-2-2-2.vue')
+          }
+        ]
+      },
+      {
         path: 'hello_test2',
         name: 'hello_test2',
         meta: {
