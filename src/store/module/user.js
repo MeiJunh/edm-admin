@@ -1,15 +1,15 @@
 import {
+  getContentByMsgId,
+  getMessage,
+  getUnreadCount,
+  getUserInfo,
+  hasRead,
   login,
   logout,
-  getUserInfo,
-  getMessage,
-  getContentByMsgId,
-  hasRead,
   removeReaded,
-  restoreTrash,
-  getUnreadCount
+  restoreTrash
 } from '@/api/user'
-import { setToken, getToken } from '@/libs/util'
+import { getToken, setToken } from '@/libs/util'
 
 export default {
   state: {
@@ -73,6 +73,23 @@ export default {
     messageTrashCount: state => state.messageTrashList.length
   },
   actions: {
+    // 自动登录
+    autoLogin ({ commit }) {
+      let userName = 'admin'
+      let password = 'admin'
+      return new Promise((resolve, reject) => {
+        login({
+          userName,
+          password
+        }).then(res => {
+          const data = res.data
+          commit('setToken', data.token)
+          resolve()
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
     // 登录
     handleLogin ({ commit }, { userName, password }) {
       userName = userName.trim()
