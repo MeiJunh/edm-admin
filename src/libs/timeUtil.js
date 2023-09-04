@@ -29,11 +29,11 @@ const formatLongToDate = function (milliseconds, fmt, def) {
   return formatDate(new Date(milliseconds), fmt, def)
 }
 
-const getNowSecondTimestamp = function getNowSecondTimestamp () {
+const getNowSecondTimestamp = function getNowSecondTimestamp() {
   return Math.trunc(new Date().valueOf() / 1000)
 }
 
-const getDateSecondTimestamp = function getDateSecondTimestamp (dt) {
+const getDateSecondTimestamp = function getDateSecondTimestamp(dt) {
   return Math.trunc(dt.valueOf() / 1000)
 }
 

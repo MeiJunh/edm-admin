@@ -5,7 +5,7 @@ import iView from 'iview'
 
 Vue.use(iView)
 
-export default function rest (options) {
+export default function rest(options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       timeout: 300000, /** 5分钟超时 **/

@@ -22,7 +22,7 @@ function getColumns (copyTransFileFunc, transFileFunc) {
     render: (h, params) => {
       let buttonList = []
       let editBtn = h(
-        'Button',
+        'el-button',
         {
           props: { type: 'info', size: 'small', class: 'container' },
           style: { margin: '5px 5px' },
@@ -36,7 +36,7 @@ function getColumns (copyTransFileFunc, transFileFunc) {
       )
 
       let copyBtn = h(
-        'Button',
+        'el-button',
         {
           props: { type: 'error', size: 'small' },
           style: { margin: '5px 5px' },
@@ -113,7 +113,7 @@ function getColumns (copyTransFileFunc, transFileFunc) {
   //     render: (h, params) => {
   //       let buttonList = []
   //       let editBtn = h(
-  //         'Button',
+  //         'el-button',
   //         {
   //           props: {type: 'info', size: 'small', class: 'container'},
   //           style: {margin: '5px 5px'},
@@ -127,7 +127,7 @@ function getColumns (copyTransFileFunc, transFileFunc) {
   //       )
   //
   //       let copyBtn = h(
-  //         'Button',
+  //         'el-button',
   //         {
   //           props: {type: 'error', size: 'small'},
   //           style: {margin: '5px 5px'},

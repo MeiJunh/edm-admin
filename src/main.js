@@ -1,56 +1,42 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
+import '@/styles/index.scss' // global css
 import App from './App'
-import router from './router'
 import store from './store'
-import iView from 'iview'
-import i18n from '@/locale'
-import config from '@/config'
-import importDirective from '@/directive'
-import { directive as clickOutside } from 'v-click-outside-x'
-import installPlugin from '@/plugin'
-import './index.less'
-import '@/assets/icons/iconfont.css'
-import TreeTable from 'tree-table-vue'
-import VOrgTree from 'v-org-tree'
-import 'v-org-tree/dist/v-org-tree.css'
+import router from './router'
+
+import '@/icons' // icon
+import '@/permission' // permission control
 import VueClipboard from 'vue-clipboard2'
-
-// 实际打包时应该不引入mock
-/* eslint-disable */
-if (process.env.NODE_ENV !== 'production') require('@/mock')
-
-Vue.use(iView, {
-  i18n: (key, value) => i18n.t(key, value)
-})
-VueClipboard.config.autoSetContainer = true
-Vue.use(TreeTable)
-Vue.use(VOrgTree)
-Vue.use(VueClipboard)
 /**
- * @description 注册admin内置插件
+ * If you don't want to use mock-server
+ * you want to use MockJs for mock api
+ * you can execute: mockXHR()
+ *
+ * Currently MockJs will be used in the production environment,
+ * please remove it before going online ! ! !
  */
-installPlugin(Vue)
-/**
- * @description 生产环境关掉提示
- */
+if (process.env.NODE_ENV === 'production') {
+  const {mockXHR} = require('../mock')
+  mockXHR()
+}
+
+// set ElementUI lang to EN
+Vue.use(ElementUI, {locale})
+// 如果想要中文版 element-ui，按如下方式声明
+// Vue.use(ElementUI)
+
 Vue.config.productionTip = false
-/**
- * @description 全局注册应用配置
- */
-Vue.prototype.$config = config
-/**
- * 注册指令
- */
-importDirective(Vue)
-Vue.directive('clickOutside', clickOutside)
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  i18n,
   store,
   render: h => h(App)
 })
